@@ -1,5 +1,6 @@
 'use client';
 import {useOrganization} from '@clerk/nextjs';
+import Link from 'next/link';
 
 export default function Home() {
   const {memberships}=useOrganization({
@@ -8,14 +9,10 @@ export default function Home() {
     },
     invitations: true
   });
-  console.log('memberships:', memberships?.data);
-
-  const derivedMemberships=memberships?.data?.map(m => m.publicUserData);
-  console.log('derivedMemberships:', derivedMemberships);
-
-  
+  const membersList=memberships?.data?.map(m => m.publicUserData);
+  console.log('membersList:', membersList);  
   return <div>
-    Home Page
-    <pre>{JSON.stringify(derivedMemberships,null,4)}</pre>
+    <Link href="/create-org" >Create Org</Link>
+    <pre>{JSON.stringify(membersList,null,4)}</pre>
   </div>;
 }
