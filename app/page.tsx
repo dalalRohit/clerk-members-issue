@@ -13,6 +13,7 @@ export default function Home() {
   console.log('membersList:', membersList);
   return (
     <div>
+      <p>Testing release tag setup</p>
       <Link href="/create-org">Create Org</Link>
       <pre>{JSON.stringify(membersList, null, 4)}</pre>
     </div>
